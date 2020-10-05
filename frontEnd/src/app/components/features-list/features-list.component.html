@@ -1,0 +1,133 @@
+<div class="list row">
+
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by title"
+          [(ngModel)]="title"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>  
+
+
+<br/>
+
+<br/>
+<br/>
+
+<div  >
+      <h4>Features List   </h4>
+      <h6>Note: This list is ordered by the Client and then client's feature priorites. If two items have same priorities, then they are ordered by its latest create or update time.  </h6>
+
+
+
+      <!-- <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let feature of features; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveFeature(feature, i)"
+        >
+        {{i+1}} ) {{ feature.title }}
+        </li>
+      </ul>
+ -->
+
+      
+      <!-- <div *ngIf="features?.length > 0"> -->
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>Client</th>
+                <th>Client priority</th>
+    
+ 
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let feature of features; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveFeature(feature, i)">
+
+                <td>
+                    {{feature.title}}
+                </td>
+                <td>
+                    {{feature.description}}
+                </td>
+                <td> {{feature.client}} </td>
+                <td> {{feature.priority}} </td>
+      
+ 
+            </tr>
+            </tbody>
+        </table>
+
+    <!-- </div> -->
+
+
+
+  
+      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllFeatures()">
+        Remove All
+      </button> -->
+    </div>
+    <div class="col-md-6  border border-primary">
+      <div *ngIf="currentFeature">
+        <h4>Feature Details</h4>
+
+        <div>
+            <label><strong>Priority:</strong></label>
+            {{ currentFeature.priority }}
+          </div>
+
+        <div>
+          <label><strong>Title:</strong></label> {{ currentFeature.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentFeature.description }}
+        </div>
+        <div>
+            <label><strong>Client:</strong></label>
+            {{ currentFeature.client }}
+          </div>
+          <div>
+            <label><strong>Target Date:</strong></label>
+            {{ currentFeature.targetDate }}
+          </div>
+          <div>
+            <label><strong>Area:</strong></label>
+            {{ currentFeature.area }}
+          </div>
+      
+
+        <a class="badge badge-warning" routerLink="/features/{{ currentFeature.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentFeature">
+        <br />
+        <p>Please click on a Feature...</p>
+      </div>
+    </div>
+  </div>
